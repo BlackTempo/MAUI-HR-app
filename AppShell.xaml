@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="final_work.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:final_work">
+
+
+    <FlyoutItem Title="Kirjautuminen" Route="MainPage">
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Etusivu" Route="Etusivu">
+        <ShellContent ContentTemplate="{DataTemplate local:Etusivu}" />
+        </FlyoutItem>
+
+    <FlyoutItem Title="Henkilöstö" Route="HenkiloLista">
+        <ShellContent ContentTemplate="{DataTemplate local:HenkiloLista}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Lisää henkilö" Route="LisaaHenkilo">
+        <ShellContent ContentTemplate="{DataTemplate local:LisaaHenkilo}" />
+    </FlyoutItem>
+
+    <ShellContent
+    Title="Henkilön tiedot"
+    Route="HenkiloTiedot"
+    ContentTemplate="{DataTemplate local:HenkiloTiedot}" />
+    
+    <ShellContent
+    Title="Muokkaa henkilöä"
+    ContentTemplate="{DataTemplate local:MuokkaaHenkilo}"
+    Route="MuokkaaHenkilo" />
+
+    <!-- Voidaan käyttää salauksen testaamiseen :)
+    
+    <ShellContent
+    Title="SalausTesti"
+    Route="SalausTesti"
+    ContentTemplate="{DataTemplate local:SalausTesti}" /> 
+    
+    -->
+    
+</Shell>

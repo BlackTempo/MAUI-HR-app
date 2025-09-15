@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="final_work.MuokkaaHenkilo"
+             Title="Muokkaa henkilöä">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15" MaximumWidthRequest="500" HorizontalOptions="Start">
+
+            <!-- Henkilötiedot -->
+            <Label Text="Henkilötiedot" FontAttributes="Bold" FontSize="20" />
+
+            <Entry x:Name="etunimetEntry" Placeholder="Etunimet*" />
+            <Entry x:Name="sukunimiEntry" Placeholder="Sukunimi*" />
+            <Entry x:Name="kutsumanimiEntry" Placeholder="Kutsumanimi*" />
+            <Entry x:Name="hetuEntry" Placeholder="Henkilötunnus*" />
+
+            <!-- Osoite -->
+            <Label Text="Kotiosoite" FontAttributes="Bold" FontSize="20" />
+
+            <Entry x:Name="katuosoiteEntry" Placeholder="Katuosoite" />
+            
+            <!-- Lisätään postinumerolle automaattinen ehdotus -->
+            <Entry x:Name="postinumeroEntry" Placeholder="Postinumero" Keyboard="Numeric" TextChanged="PostinumeroChanged" />
+
+            <CollectionView x:Name="postinumeroEhdotukset" IsVisible="False" HeightRequest="100" SelectionMode="Single" SelectionChanged="PostinumeroValittu" Margin="0,0,0,10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="LightGray" Padding="5" Margin="2">
+                            <Label Text="{Binding .}" FontSize="14" />
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            <!-- Postitoimipaikka -->
+            <Entry x:Name="postitoimipaikkaEntry" Placeholder="Postitoimipaikka*" TextChanged="PostitoimipaikkaChanged" />
+
+            <!-- Lisätään useammalle automaattiselle postitoimipaikkaehdotukselle ikkuna -->
+            <CollectionView x:Name="postitoimipaikkaEhdotukset" IsVisible="False" HeightRequest="100" SelectionMode="Single" SelectionChanged="PostitoimipaikkaValittu">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding .}" Padding="5" FontSize="14" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            <!-- Toimisuhde -->
+            <Label Text="Toimisuhde" FontAttributes="Bold" FontSize="20" />
+
+            <Label Text="Alkamispäivä" Margin="10,0"/>
+            <DatePicker x:Name="alkamispaivaPicker" Format="d" />
+
+            <!-- Tehdään siistimmän näköinen horizontalilla -->
+            <HorizontalStackLayout Spacing="5">
+                <Label Text="Toistaiseksi voimassa oleva työsuhde" VerticalOptions="Center"/>
+                <CheckBox x:Name="toistaiseksiCheck" CheckedChanged="ToistaiseksiCheck_CheckedChanged" />
+            </HorizontalStackLayout>
+
+            <Label x:Name="paattumisLabel" Text="Päättymispäivä" Margin="10,0"/>
+            <DatePicker x:Name="paattumispaivaPicker" Format="d" />
+
+            <Entry x:Name="nimikeEntry" Placeholder="Tehtävänimike" />
+            
+            <!-- Käytetään Pickeriä valitsemaan kolmesta yksiköstä -->
+            <Picker x:Name="yksikkoPicker" Title="Valitse yksikkö" Margin="0,0,0,50">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>ICT-tiimi</x:String>
+                        <x:String>HR-osasto</x:String>
+                        <x:String>Palkanlaskenta</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Napit -->
+            <Button Text="Tallenna muutokset" Clicked="TallennaKlikattu" />
+            <Button Text="Poista henkilö" Clicked="PoistaKlikattu" BackgroundColor="DarkRed" TextColor="White" />
+            <Button Text="Palaa henkilöstölistaan" Clicked="PalaaEtusivulleKlikattu" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+            x:Class="final_work.Etusivu"  
+            Title="Etusivu">  
+
+   <VerticalStackLayout Padding="30" Spacing="30" VerticalOptions="Center" HorizontalOptions="Center" MaximumWidthRequest="300">  
+
+       <Label Text="Tervetuloa HR-sovellukseen!" FontSize="28" HorizontalOptions="Center" MaximumWidthRequest="500"/>
+       
+       <Image Source="hr2.png" HeightRequest="150"/>
+       
+       <Button Text="Näytä lista työntekijöistä" Clicked="NaytaHenkiloLista" CornerRadius="20"/>  
+
+       <Button Text="Lisää uusi henkilö listaan" Clicked="LisaaHenkiloKlikattu" CornerRadius="20"/>  
+
+       <Button Text="Sulje sovellus" Clicked="SuljeSovellusKlikattu" IsVisible="{OnPlatform Default=True, Android=False, iOS=False}" 
+               CornerRadius="20" HorizontalOptions="Center" MaximumWidthRequest="150"/>  
+       
+   </VerticalStackLayout>  
+</ContentPage>

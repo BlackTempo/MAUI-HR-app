@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="final_work.HenkiloTiedot"
+             Title="Henkilön tiedot">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="50" Spacing="10">
+
+            <Label Text="Henkilötiedot" FontAttributes="Bold" FontSize="18"/>
+            <HorizontalStackLayout>
+                <Label Text="Nimi:" VerticalOptions="Center" Padding="0,0,5,0" />
+                <Label Text="{Binding Etunimet}" VerticalOptions="Center" Padding="5"/>
+                <Label Text="{Binding Sukunimi}" Margin="2, 0" FontSize="Small"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Kutsumanimi:"/>
+                <Label Text="{Binding Kutsumanimi}" Margin="10, 0"/>
+            </HorizontalStackLayout>
+            <Label Text="{Binding Henkilötunnus}" />
+
+            <Label Text="Kotiosoite" FontAttributes="Bold" FontSize="18" Margin="0,10,0,0"/>
+            <HorizontalStackLayout>
+                <Label Text="{Binding Katuosoite}" />
+                <Label Text="{Binding Postinumero}" Margin="10,0,0,0" />
+                <Label Text="{Binding Postitoimipaikka}" Margin="5, 0"/>
+            </HorizontalStackLayout>
+            <Label Text="Toimisuhde" FontAttributes="Bold" FontSize="18" Margin="0,5,0,0"/>
+            <Label Text="{Binding Alkamispäivä, StringFormat='Alkamispäivä: {0:d}'}" />
+            <Label Text="{Binding Päättymispäivä, StringFormat='Päättymispäivä: {0:d}'}" IsVisible="{Binding Päättymispäivä, Converter={StaticResource NullToBoolConverter}}" />
+            <HorizontalStackLayout>
+                <Label Text="Nimike:"/>
+                <Label Text="{Binding Nimike}" Margin="5,0"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Yksikkö:"/>
+                <Label Text="{Binding Yksikkö}" Margin="5,0"/>
+            </HorizontalStackLayout>
+            <Button Text="Palaa takaisin Henkilölistaukseen" Clicked="PalaaKlikattu" Margin="0,20,0,0" MaximumWidthRequest="400" HorizontalOptions="Start" CornerRadius="20"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

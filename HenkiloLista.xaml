@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="final_work.HenkiloLista"
+             Title="Henkilöstö">
+
+    <VerticalStackLayout Padding="20" Spacing="5">
+
+        <Label Text="Henkilöstölista" FontSize="24" HorizontalOptions="Center"/>
+
+        <HorizontalStackLayout Spacing="10" Margin="10,5">
+            <!-- Tehdään listan järjestelyyn nappi ja vetovalikko-->
+            <Button x:Name="jarjestysSuuntaNappi" Text="↑" HeightRequest="10" VerticalOptions="End" CornerRadius="10" Clicked="VaihdaJarjestysSuunta" />
+            <Picker x:Name="jarjestysPicker" Title="Järjestä aakkosjärjestykseen valinnan mukaan" SelectedIndex="1" SelectedIndexChanged="JarjestysValittu" MinimumWidthRequest="200">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Kutsumanimi</x:String>
+                        <x:String>Sukunimi</x:String>
+                        <x:String>Nimike</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </HorizontalStackLayout>
+            <!-- Lisää uuden henkilön napin kautta -->
+        <Button Text="Lisää uusi henkilö" Clicked="LisaaHenkiloKlikattu" CornerRadius="20" Margin="0, 10" />
+        
+        <!-- Näyttää jo sovellukseen lisättyjen henkilöiden tiedot listana (Kutsumanimen, Sukunimen, Henkilötunnuksen ja Nimikkeen) -->
+        <CollectionView x:Name="henkiloListaView"
+                        SelectionMode="Single"
+                        SelectionChanged="HenkiloValittu"
+                        Margin="0,20,0,0" Background="#001EFF" CanReorderItems="False">
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="#001F58" Padding="10" Margin="0,5" Stroke="#852222">
+                        <HorizontalStackLayout Spacing="5">
+                            <Label Text="{Binding Kutsumanimi}" FontSize="18" FontAttributes="Bold" />
+                            <Label Text="{Binding Sukunimi}" FontSize="18" />
+                            <Label Text="{Binding Henkilötunnus}" FontSize="18" TextColor="Gray" />
+                            <Label Text="{Binding Nimike}" FontSize="18" TextColor="DimGray" />
+                        </HorizontalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+
+</ContentPage>

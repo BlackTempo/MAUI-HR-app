@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="final_work.SalausTesti"
+             Title="Salauksen testaus">
+<!-- Salauksen testaamista varten oma sivu -->
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <Label Text="Anna testimerkkijono:" />
+        <Editor x:Name="syoteEditor" HeightRequest="100" />
+
+        <Button Text="Salaa ja pura" Clicked="SalausKlikattu" />
+
+        <Label Text="Salattu:" FontAttributes="Bold" />
+        <Label x:Name="salattuLabel" />
+
+        <Label Text="Purettu:" FontAttributes="Bold" />
+        <Label x:Name="purettuLabel" />
+
+    </VerticalStackLayout>
+</ContentPage>
